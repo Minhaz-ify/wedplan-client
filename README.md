@@ -1,7 +1,7 @@
-# WedPlan — Client (Next.js)
 
-Customer / Vendor / Admin wedding planning platform. Pairs with `wedplan-server`.
+# WedPlan — Wedding Planning Platform
 
+WedPlan is a role-based wedding planning platform. Customers discover wedding services and request bookings, vendors publish services and manage requests (with a Premium plan), and admins review services, manage users and monitor transactions.
 
 ## Live Links
 
@@ -9,36 +9,41 @@ Customer / Vendor / Admin wedding planning platform. Pairs with `wedplan-server`
 - Client repo: https://github.com/Minhaz-ify/wedplan-client
 - Server repo: https://github.com/Minhaz-ify/wedplan-server
 
-## Stack
+## Important Features
 
-Next.js 15 (App Router), Tailwind CSS 3, Better Auth (email/password + Google, JWT plugin), Framer Motion, react-hot-toast.
+- Browse, search, filter (category, location) and sort services by price
+- Service details with multiple images and a booking request form
+- Role-based dashboards for Customer, Vendor and Admin
+- Vendors add, update and delete services; free plan allows 3 active services
+- Admin approves or rejects services, blocks or unblocks users, views transactions
+- Stripe Checkout (test mode); Premium activates only after a verified webhook
+- Email/password and Google sign in with Better Auth
+- JWT verification and server-side role checks on the Express API
+- Image upload with ImgBB, toast notifications, loading and error states
+- Responsive design with Framer Motion animations on the home page
 
-## Setup
+## Technology Stack
 
-```bash
+Next.js 15 (App Router), Tailwind CSS, Better Auth, Framer Motion, react-hot-toast, Express.js, MongoDB, Stripe Checkout, ImgBB.
+
+## Installation
+
+git clone https://github.com/Minhaz-ify/wedplan-client.git
+cd wedplan-client
 npm install
-cp .env.example .env   # fill in values
+cp .env.example .env   
+
+## Run Locally
+
 npm run dev
-```
+Open http://localhost:3000. Start wedplan-server too; both use the same MongoDB database.
 
-Start the server (`wedplan-server`) too — both share the same MongoDB database.
+## Environment Variables
 
-## Environment
-
-See `.env.example`. Google OAuth redirect URI: `<BETTER_AUTH_URL>/api/auth/callback/google`.
-The ImgBB key stays server-side (uploads go through `/api/upload`).
+BETTER_AUTH_URL, NEXT_PUBLIC_APP_URL, BETTER_AUTH_SECRET, MONGODB_URI, MONGODB_DB, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, NEXT_PUBLIC_API_URL, IMGBB_API_KEY. See .env.example. Never commit .env.
 
 ## Roles
 
-- **Customer:** browse, search/filter/sort, request bookings, cancel pending requests.
-- **Vendor:** manage services (free plan: 3 active), accept/reject bookings, upgrade to Premium via Stripe.
-- **Admin:** manage users (block/unblock), approve/reject/delete services, view transactions.
-- Sign-up can only create `customer` or `vendor`; admin is promoted via the server script.
-
-## Notes
-
-- Private routes: `/services/[id]`, `/dashboard/**`, `/payment/**` (middleware + server-side checks).
-- Premium activates only after the Stripe webhook confirms payment; the success page just polls the result.
-- Google sign-up creates a Customer account.
-- Components are plain Tailwind; add ShadCN/HeroUI components if your rubric requires a specific library
-  (`npx shadcn@latest init`), then swap in for `Modal`, buttons, inputs.
+- Customer: browse, search, request bookings, cancel pending requests
+- Vendor: manage services and bookings, upgrade to Premium
+- Admin: manage users and services, view transactions. Admin is assigned by a server script, not by sign up.
