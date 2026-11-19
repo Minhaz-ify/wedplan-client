@@ -5,6 +5,7 @@ import { useApi } from "@/lib/hooks";
 import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
 import ServiceCard from "@/components/ServiceCard";
 import { Loader, Empty, ErrorBox } from "@/components/Ui";
+import WhyChoose from "@/components/WhyChoose";
 
 const fade = { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.5 } };
 
@@ -23,7 +24,7 @@ export default function Home() {
             <h1 className="text-4xl font-bold leading-tight sm:text-6xl">Find every vendor for your perfect day</h1>
             <p className="mt-5 max-w-xl text-lg text-white/85">Compare photographers, venues, florists, caterers and stylists — then send a booking request in minutes.</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/services" className="btn-primary px-7 py-3">Browse Services</Link>
+              <Link href="/services" className="btn-primary px-7 py-3">Explore Wedding Services</Link>
               <Link href="/signup" className="btn bg-white/15 px-7 py-3 text-white backdrop-blur hover:bg-white/25">Join as Vendor</Link>
             </div>
           </motion.div>
@@ -62,7 +63,7 @@ export default function Home() {
       </section>
 
       <section className="container-x py-20">
-        <motion.h2 {...fade} className="mb-10 text-center text-3xl font-bold sm:text-4xl">How WedPlan Works</motion.h2>
+        <motion.h2 {...fade} className="mb-10 text-center text-3xl font-bold sm:text-4xl"><WhyChoose />How WedPlan Works</motion.h2>
         <div className="grid gap-6 md:grid-cols-3">
           {[["1", "Discover", "Search by category, location and price to shortlist vendors you love."], ["2", "Request", "Send a booking request with your date, venue and a personal message."], ["3", "Celebrate", "Track responses from your dashboard and lock in your dream team."]].map(([n, t, d], i) => (
             <motion.div key={n} {...fade} transition={{ duration: 0.45, delay: i * 0.1 }} className="card p-7 text-center">
