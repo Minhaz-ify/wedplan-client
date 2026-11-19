@@ -62,8 +62,10 @@ export default function Home() {
         </div>
       </section>
 
+      <WhyChoose />
+
       <section className="container-x py-20">
-        <motion.h2 {...fade} className="mb-10 text-center text-3xl font-bold sm:text-4xl"><WhyChoose />How WedPlan Works</motion.h2>
+        <motion.h2 {...fade} className="mb-10 text-center text-3xl font-bold sm:text-4xl">How WedPlan Works</motion.h2>
         <div className="grid gap-6 md:grid-cols-3">
           {[["1", "Discover", "Search by category, location and price to shortlist vendors you love."], ["2", "Request", "Send a booking request with your date, venue and a personal message."], ["3", "Celebrate", "Track responses from your dashboard and lock in your dream team."]].map(([n, t, d], i) => (
             <motion.div key={n} {...fade} transition={{ duration: 0.45, delay: i * 0.1 }} className="card p-7 text-center">
