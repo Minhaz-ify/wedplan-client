@@ -1,4 +1,3 @@
-
 # WedPlan — Wedding Planning Platform
 
 WedPlan is a role-based wedding planning platform. Customers discover wedding services and request bookings, vendors publish services and manage requests (with a Premium plan), and admins review services, manage users and monitor transactions.
@@ -24,14 +23,14 @@ WedPlan is a role-based wedding planning platform. Customers discover wedding se
 
 ## Technology Stack
 
-Next.js 15 (App Router), Tailwind CSS, Better Auth, Framer Motion, react-hot-toast, Express.js, MongoDB, Stripe Checkout, ImgBB.
+Next.js 15 (App Router), Tailwind CSS, ShadCN UI, Better Auth, Framer Motion, react-hot-toast, Express.js, MongoDB, Stripe Checkout, ImgBB.
 
 ## Installation
 
 git clone https://github.com/Minhaz-ify/wedplan-client.git
 cd wedplan-client
 npm install
-cp .env.example .env   
+cp .env.example .env
 
 ## Run Locally
 
